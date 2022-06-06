@@ -1,5 +1,11 @@
 # transferGo currencies converter
 
+## Disclaimer 
+
+This is just a showcase of good practices, design patterns and implementation ideas - totally not relateble for a project size :) 
+
+Libraries like translations, ui-kit or even using typescript would never be used for this solution. 
+
 ## Setup 
 
 - clone the repository 
