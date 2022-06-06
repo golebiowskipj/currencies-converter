@@ -11,7 +11,7 @@ export const theme: DefaultTheme = {
     body: 'Inter',
   },
   shadowVariants: {
-    selectableTile: `0px 2px 4px -2px rgba(66, 87, 79, 0.12),
+    basic: `0px 2px 4px -2px rgba(66, 87, 79, 0.12),
     0px 4px 4px -2px rgba(66, 87, 79, 0.08)`,
   },
   media: {
