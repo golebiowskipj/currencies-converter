@@ -1,7 +1,6 @@
 import { useTranslations } from 'translations'
+import { Button, InputText, Card } from 'ui-kit'
 import { StyledConversionWidgetWrapper } from './ConversionWidget.styles'
-import { Button } from '../../ui-kit'
-import { Card } from '../../ui-kit/Card/Card.component'
 
 export const ConversionWidget = () => {
   const t = useTranslations()
@@ -9,7 +8,8 @@ export const ConversionWidget = () => {
   return (
     <StyledConversionWidgetWrapper>
       <Card>
-        widget<Button>{t('cta')}</Button>
+        <InputText type='number' endAdornment='EUR' />
+        <Button>{t('cta')}</Button>
       </Card>
     </StyledConversionWidgetWrapper>
   )
