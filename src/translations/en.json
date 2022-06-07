@@ -1,3 +1,15 @@
 {
-    "cta": "button cta"
+    "cta": "button cta",
+    "conversionWidget": {
+        "conversionForm": {
+            "fieldAmount": {
+                "label": "Amount"
+            },
+            "submitButton": "Convert",
+            "validation": {
+                "required": "Field can not be empty",
+                "min": "Minimum value is: {value}"
+            }
+        }
+    }
 }

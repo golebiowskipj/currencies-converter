@@ -6,6 +6,7 @@ export const theme: DefaultTheme = {
     primary: '#25d743',
     black: '#000000',
     grey: '#a3a3a3',
+    error: '#ff0000',
   },
   fontFamily: {
     headline: 'Geller',

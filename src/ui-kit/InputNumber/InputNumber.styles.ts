@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { Input } from '@material-ui/core'
+import { TextField } from '@material-ui/core'
 import { paragraph, paragraphLarge } from '../Typography/Typography.styles'
 
-export const StyledInput = styled(Input)`
+export const StyledInput = styled(TextField)`
   &.MuiInput-root {
     ${paragraph};
     color: ${({ theme }) => theme.color.grey};
