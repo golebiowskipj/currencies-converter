@@ -18,3 +18,7 @@ Libraries like translations, ui-kit or even using typescript would never be used
 - `yarn lint` - runs eslint 
 - `yarn prettier` - runs prettier 
 - `yarn type-check` - runs typscript check 
+
+## Known issues 
+
+1. There is a console error regarding using "endAdornment" as HTML element prop - I don't want to waste time on investigation, markup looks good to me :/ 
