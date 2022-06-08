@@ -1,6 +1,7 @@
 {
     "cta": "button cta",
     "conversionWidget": {
+        "disclaimerText": "All figures are live mide-market rates, which are for informational purposes only. To see the rates for money transfer, please select sending money option.",
         "conversionForm": {
             "fieldAmount": {
                 "label": "Amount:"

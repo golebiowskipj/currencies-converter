@@ -3,13 +3,15 @@ import { useTranslations } from 'translations'
 import { InputNumber } from 'ui-kit'
 import { StyledErrorMessage } from '../ConversionForm.styles'
 import { FIELD_CONVERTED_TO, useConversionForm } from '../useConversionForm'
+import { useConversionWidget } from '../../ConversionWidgetProvider/ConversionWidgetProvider.component'
 
 export const ConvertedToField = () => {
   const { control, errors } = useConversionForm()
+  const { codeTo } = useConversionWidget()
   const t = useTranslations()
 
   return (
-    <>
+    <div>
       <Controller
         name={FIELD_CONVERTED_TO}
         control={control}
@@ -18,7 +20,7 @@ export const ConvertedToField = () => {
             id={FIELD_CONVERTED_TO}
             type='number'
             label={t('conversionWidget.conversionForm.fieldConvertedTo.label')}
-            endAdornment='EUR'
+            endAdornment={codeTo}
             value={value}
             onChange={onChange}
             error={!!errors[FIELD_CONVERTED_TO]?.message}
@@ -28,6 +30,6 @@ export const ConvertedToField = () => {
       <StyledErrorMessage>
         {errors[FIELD_CONVERTED_TO] && errors[FIELD_CONVERTED_TO]?.message}
       </StyledErrorMessage>
-    </>
+    </div>
   )
 }

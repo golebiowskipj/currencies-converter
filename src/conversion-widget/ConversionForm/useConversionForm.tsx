@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -44,9 +43,6 @@ export type ConversionFormData = yup.InferType<
 >
 
 export const useConversionForm = () => {
-  const [formStatus, setFormStatus] = useState<'INITIAL' | 'CONVERTED'>(
-    'INITIAL'
-  )
   const {
     control,
     handleSubmit,
@@ -64,7 +60,5 @@ export const useConversionForm = () => {
     control,
     handleSubmit,
     errors,
-    formStatus,
-    setFormStatus,
   }
 }
