@@ -3,6 +3,14 @@ import { TextField } from '@material-ui/core'
 import { paragraph, paragraphLarge } from '../Typography/Typography.styles'
 
 export const StyledInput = styled(TextField)`
+  .MuiInputLabel-root {
+    color: ${({ theme }) => theme.color.grey};
+    text-transform: uppercase;
+
+    &.Mui-disabled {
+      color: ${({ theme }) => theme.color.grey};
+    }
+  }
   &.MuiInput-root {
     ${paragraph};
     color: ${({ theme }) => theme.color.grey};

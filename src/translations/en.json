@@ -3,7 +3,10 @@
     "conversionWidget": {
         "conversionForm": {
             "fieldAmount": {
-                "label": "Amount"
+                "label": "Amount:"
+            },
+            "fieldConvertedTo": {
+                "label": "Converted to:"
             },
             "submitButton": "Convert",
             "validation": {
