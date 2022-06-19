@@ -7,6 +7,7 @@ export const theme: DefaultTheme = {
     black: '#000000',
     grey: '#a3a3a3',
     error: '#ff0000',
+    blue: '#a5c7f7',
   },
   fontFamily: {
     headline: 'Geller',

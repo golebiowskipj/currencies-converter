@@ -9,8 +9,7 @@ interface GetConversionResponse {
   toAmount: number
 }
 
-const BASE_URL =
-  'https://my.transfergo.com/api/fx-rates?from=EUR&to=GBP&amount=11'
+const BASE_URL = 'https://my.transfergo.com/api/fx-rates'
 
 export const getConversion = async (request: GetConversionRequest) => {
   try {

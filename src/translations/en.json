@@ -9,6 +9,12 @@
             "fieldConvertedTo": {
                 "label": "Converted to:"
             },
+            "fieldFromCode": {
+                "label": "From:"
+            },
+            "fieldToCode": {
+                "label": "To:"
+            },
             "submitButton": "Convert",
             "validation": {
                 "required": "Field can not be empty",
