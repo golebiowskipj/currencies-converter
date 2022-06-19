@@ -6,8 +6,7 @@ import { FIELD_CONVERTED_TO } from '../useConversionForm'
 import { useConversionWidget } from '../../ConversionWidgetProvider/ConversionWidgetProvider.component'
 
 export const ConvertedToField = () => {
-  const { codeTo, control, errors, toAmount, dispatchConversionWidgetAction } =
-    useConversionWidget()
+  const { codeTo, control, errors, toAmount } = useConversionWidget()
   const t = useTranslations()
 
   return (
@@ -15,7 +14,7 @@ export const ConvertedToField = () => {
       <Controller
         name={FIELD_CONVERTED_TO}
         control={control}
-        render={({ field: { onChange } }) => (
+        render={() => (
           <InputNumber
             disabled
             id={FIELD_CONVERTED_TO}
@@ -23,12 +22,8 @@ export const ConvertedToField = () => {
             label={t('conversionWidget.conversionForm.fieldConvertedTo.label')}
             $endAdornment={codeTo}
             value={toAmount}
-            onChange={e => {
-              onChange(e)
-              dispatchConversionWidgetAction({
-                type: 'SET_TO_AMOUNT',
-                payload: e.target.value as unknown as number,
-              })
+            onChange={() => {
+              return null
             }}
             error={!!errors[FIELD_CONVERTED_TO]?.message}
           />
