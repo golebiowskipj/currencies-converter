@@ -15,7 +15,7 @@ export const StyledRowNumberInputs = styled.div<{ isConverted: boolean }>`
     if (isConverted) {
       return css`
         grid-template-columns: 1fr 1fr;
-        grid-column-gap: 2rem;
+        grid-column-gap: 3rem;
       `
     }
 
@@ -23,4 +23,10 @@ export const StyledRowNumberInputs = styled.div<{ isConverted: boolean }>`
       grid-template-columns: 1fr;
     `
   }}
+`
+
+export const StyledRowCodeSelects = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 3rem 1fr;
+  margin-bottom: 2rem;
 `

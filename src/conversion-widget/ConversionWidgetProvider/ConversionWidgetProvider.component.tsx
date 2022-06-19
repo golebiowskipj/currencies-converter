@@ -25,6 +25,9 @@ type ConversionWidgetAction =
   | { type: 'LOADING' }
   | { type: 'SET_FROM_AMOUNT'; payload: number }
   | { type: 'SET_TO_AMOUNT'; payload: number }
+  | { type: 'SET_CODE_FROM'; payload: string }
+  | { type: 'SET_CODE_TO'; payload: string }
+  | { type: 'SWITCH_CODES' }
   | {
       type: 'SET_FETCHED_DATA_FROM'
       payload: {
@@ -55,7 +58,7 @@ type ConversionWidgetState = Omit<
   | 'control'
   | 'errors'
   | 'handleSubmit'
-  | 'convertManul'
+  | 'convertManual'
   | 'convertDebounced'
 >
 
@@ -73,6 +76,17 @@ const reducer = (
     }
     case 'SET_TO_AMOUNT': {
       return { ...state, isLoading: false, toAmount: action.payload }
+    }
+    case 'SET_CODE_FROM': {
+      return { ...state, isLoading: false, codeFrom: action.payload }
+    }
+    case 'SET_CODE_TO': {
+      return { ...state, isLoading: false, codeTo: action.payload }
+    }
+    case 'SWITCH_CODES': {
+      const tempFrom = state.codeFrom
+      const tempTo = state.codeTo
+      return { ...state, isLoading: false, codeTo: tempFrom, codeFrom: tempTo }
     }
     case 'SET_FETCHED_DATA_FROM': {
       return {
@@ -124,24 +138,33 @@ export const ConversionWidgetProvider = (
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const convertDebounced = useCallback(
-    debounce(async ({ amountFrom }: { amountFrom: number }) => {
-      dispatch({ type: 'LOADING' })
-
-      const conversion = await getConversion({
-        codeFrom,
-        codeTo,
+    debounce(
+      async ({
         amountFrom,
-      })
-      if (!conversion) return
+      }: {
+        amountFrom: number
+        codeFrom: string
+        codeTo: string
+      }) => {
+        dispatch({ type: 'LOADING' })
 
-      dispatch({
-        type: 'SET_FETCHED_DATA_FROM',
-        payload: {
-          amountTo: conversion.toAmount,
-          rate: conversion.rate,
-        },
-      })
-    }, 500),
+        const conversion = await getConversion({
+          codeFrom,
+          codeTo,
+          amountFrom,
+        })
+        if (!conversion) return
+
+        dispatch({
+          type: 'SET_FETCHED_DATA_FROM',
+          payload: {
+            amountTo: conversion.toAmount,
+            rate: conversion.rate,
+          },
+        })
+      },
+      500
+    ),
     [isConverted]
   )
 
@@ -168,12 +191,12 @@ export const ConversionWidgetProvider = (
   useEffect(() => {
     if (isConverted) {
       if (shouldConvert.current) {
-        convertDebounced({ amountFrom: fromAmount })
+        convertDebounced({ amountFrom: fromAmount, codeTo, codeFrom })
       } else {
         shouldConvert.current = true
       }
     }
-  }, [fromAmount, convertDebounced, isConverted])
+  }, [fromAmount, codeFrom, codeTo, convertDebounced, isConverted])
 
   return (
     <ConversionWidgetContext.Provider

@@ -6,6 +6,8 @@ This is just a showcase of good practices, design patterns and implementation id
 
 Libraries like translations, ui-kit or even using typescript would never be used for this solution. 
 
+At the same time, I didn't want to put much effort in things like pixel perfect icons (flags etc.) or whole country codes list so I just used simplies possible solution.
+
 ## Setup 
 
 - clone the repository 
@@ -18,7 +20,3 @@ Libraries like translations, ui-kit or even using typescript would never be used
 - `yarn lint` - runs eslint 
 - `yarn prettier` - runs prettier 
 - `yarn type-check` - runs typscript check 
-
-## Known issues 
-
-1. There is a console error regarding using "endAdornment" as HTML element prop - I don't want to waste time on investigation, markup looks good to me :/ 

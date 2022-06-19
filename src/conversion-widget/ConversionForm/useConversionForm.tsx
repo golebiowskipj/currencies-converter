@@ -9,6 +9,10 @@ export const FIELD_AMOUNT_DEFAULT = parseFloat((1.0).toFixed(2))
 export const FIELD_CONVERTED_TO = 'converted'
 const FIELD_CONVERTED_TO_MIN = 0.01
 export const FIELD_CONVERTED_TO_DEFAULT = parseFloat((1.0).toFixed(2))
+export const FIELD_CODE_FROM = 'codeFrom'
+export const FIELD_CODE_FROM_DEFAULT = 'EUR'
+export const FIELD_CODE_TO = 'codeTo'
+export const FIELD_CODE_TO_DEFAULT = 'GBP'
 
 const conversionValidationSchema = yup.object({
   [FIELD_AMOUNT]: yup
@@ -36,6 +40,22 @@ const conversionValidationSchema = yup.object({
     .typeError(() => (
       <FormattedMessage id='conversionWidget.conversionForm.validation.required' />
     )),
+  [FIELD_CODE_FROM]: yup
+    .string()
+    .required(() => (
+      <FormattedMessage id='conversionWidget.conversionForm.validation.required' />
+    ))
+    .typeError(() => (
+      <FormattedMessage id='conversionWidget.conversionForm.validation.required' />
+    )),
+  [FIELD_CODE_TO]: yup
+    .string()
+    .required(() => (
+      <FormattedMessage id='conversionWidget.conversionForm.validation.required' />
+    ))
+    .typeError(() => (
+      <FormattedMessage id='conversionWidget.conversionForm.validation.required' />
+    )),
 })
 
 export type ConversionFormData = yup.InferType<
@@ -52,7 +72,11 @@ export const useConversionForm = () => {
   } = useForm<ConversionFormData>({
     resolver: yupResolver(conversionValidationSchema),
     mode: 'onChange',
-    defaultValues: { amount: FIELD_AMOUNT_DEFAULT },
+    defaultValues: {
+      amount: FIELD_AMOUNT_DEFAULT,
+      codeFrom: FIELD_CODE_FROM_DEFAULT,
+      codeTo: FIELD_CODE_TO_DEFAULT,
+    },
   })
 
   return {
