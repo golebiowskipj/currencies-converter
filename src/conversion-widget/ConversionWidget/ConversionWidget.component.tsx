@@ -1,4 +1,4 @@
-import { Card } from 'ui-kit'
+import { Card, Loader } from 'ui-kit'
 import { StyledConversionWidgetWrapper } from './ConversionWidget.styles'
 import { ConversionForm } from '../ConversionForm/ConversionForm.component'
 import {
@@ -9,14 +9,21 @@ import { DisclaimerText } from '../DisclaimerText/DisclaimerText.component'
 import { RateInfo } from '../RateInfo/RateInfo.component'
 
 const ConversionWidgetInner = () => {
-  const { isConverted } = useConversionWidget()
+  const { isConverted, isLoading } = useConversionWidget()
+
+  const content = isLoading ? (
+    <Loader />
+  ) : (
+    <>
+      <ConversionForm />
+      {isConverted && <RateInfo />}
+      {isConverted && <DisclaimerText />}
+    </>
+  )
+
   return (
     <StyledConversionWidgetWrapper>
-      <Card>
-        <ConversionForm />
-        {isConverted && <RateInfo />}
-        {isConverted && <DisclaimerText />}
-      </Card>
+      <Card>{content}</Card>
     </StyledConversionWidgetWrapper>
   )
 }

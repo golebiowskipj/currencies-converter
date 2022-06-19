@@ -8,11 +8,11 @@ import { StyledInput } from './InputNumber.styles'
 
 type InputNumberProps =
   | TextFieldPropsMui & {
-      endAdornment?: string
+      $endAdornment?: string
     }
 
 export const InputNumber = (props: InputNumberProps) => {
-  const { endAdornment, value } = props
+  const { $endAdornment, value } = props
 
   return (
     <StyledInput
@@ -20,8 +20,8 @@ export const InputNumber = (props: InputNumberProps) => {
       value={typeof value === 'number' ? value.toFixed(2) : value}
       InputLabelProps={{ shrink: true }}
       InputProps={{
-        endAdornment: endAdornment && (
-          <InputAdornment position='end'>{endAdornment}</InputAdornment>
+        endAdornment: $endAdornment && (
+          <InputAdornment position='end'>{$endAdornment}</InputAdornment>
         ),
       }}
     />
