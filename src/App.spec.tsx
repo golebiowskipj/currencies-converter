@@ -52,4 +52,12 @@ describe('ConversionWidget', () => {
       expect(toValue).toEqual('EUR')
     })
   })
+
+  it.todo(
+    'click on covert button makes and api call and displays conversion data'
+  )
+
+  it.todo(
+    'change of amount value is debounced, makes api call and displays conversion data'
+  )
 })
