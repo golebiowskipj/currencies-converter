@@ -17,6 +17,7 @@ export const ToCodeField = () => {
         control={control}
         render={({ field: { onChange } }) => (
           <InputSelect
+            inputTestId='input-to'
             label={t('conversionWidget.conversionForm.fieldToCode.label')}
             labelId='code-to-label'
             onChange={e => {

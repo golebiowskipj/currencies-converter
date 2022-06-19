@@ -58,6 +58,7 @@ export const FromCodeField = () => {
         control={control}
         render={({ field: { onChange } }) => (
           <InputSelect
+            inputTestId='input-from'
             label={t('conversionWidget.conversionForm.fieldFromCode.label')}
             labelId='code-from-label'
             onChange={e => {

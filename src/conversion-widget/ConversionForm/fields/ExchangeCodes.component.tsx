@@ -14,6 +14,7 @@ export const ExchangeCodes = () => {
   return (
     <StyledButton
       type='button'
+      data-testid='exchange-button'
       onClick={() => dispatchConversionWidgetAction({ type: 'SWITCH_CODES' })}
     >
       <ArrowsIcon />
