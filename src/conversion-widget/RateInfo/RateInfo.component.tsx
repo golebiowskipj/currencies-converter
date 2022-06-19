@@ -4,6 +4,8 @@ import { useConversionWidget } from '../ConversionWidgetProvider/ConversionWidge
 export const RateInfo = () => {
   const { rate, codeFrom, codeTo } = useConversionWidget()
 
+  if (rate === undefined) return null
+
   return (
     <StyledText>
       1 {codeFrom} = {rate} {codeTo}

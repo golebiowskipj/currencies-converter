@@ -5,10 +5,10 @@ import { FormattedMessage } from 'translations'
 
 export const FIELD_AMOUNT = 'amount'
 const FIELD_AMOUNT_MIN = 0.01
-const FIELD_AMOUNT_DEFAULT = parseFloat((1.0).toFixed(2))
+export const FIELD_AMOUNT_DEFAULT = parseFloat((1.0).toFixed(2))
 export const FIELD_CONVERTED_TO = 'converted'
 const FIELD_CONVERTED_TO_MIN = 0.01
-const FIELD_CONVERTED_TO_DEFAULT = parseFloat((1.0).toFixed(2))
+export const FIELD_CONVERTED_TO_DEFAULT = parseFloat((1.0).toFixed(2))
 
 const conversionValidationSchema = yup.object({
   [FIELD_AMOUNT]: yup
@@ -47,18 +47,19 @@ export const useConversionForm = () => {
     control,
     handleSubmit,
     formState: { errors },
+    getValues,
+    setValue,
   } = useForm<ConversionFormData>({
-    defaultValues: {
-      [FIELD_AMOUNT]: FIELD_AMOUNT_DEFAULT,
-      [FIELD_CONVERTED_TO]: FIELD_CONVERTED_TO_DEFAULT,
-    },
     resolver: yupResolver(conversionValidationSchema),
     mode: 'onChange',
+    defaultValues: { amount: FIELD_AMOUNT_DEFAULT },
   })
 
   return {
     control,
     handleSubmit,
     errors,
+    getValues,
+    setValue,
   }
 }
